@@ -1,1 +1,1 @@
-# React / Redux Weather App
+## React / Redux Weather App
