@@ -22,5 +22,9 @@ module.exports = {
   devServer: {
     historyApiFallback: true,
     contentBase: './'
-  }
+  },
+  loaders: [
+   // other loaders
+   { test: /\.json$/, loader: 'json' },
+  ]
 };

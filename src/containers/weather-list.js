@@ -1,16 +1,24 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import {countries} from "country-data";
+import CountryData from 'country-data'
 
+// const CountryData2 = require(CountryData)
 class WeatherList extends Component {
 
   weatherDetails() {
+    console.log("countries", CountryData.countries, CountryData.countries["US"])
+    console.log(JSON.stringify(countries['US']));
+    console.log(JSON.stringify(CountryData.countries['US']));
+    //console.log("countries", CountryData, CountryData.countries, CountryData.countries.all, CountryData.countries["TW"])
     return this.props.weatherList.map((weather) => {
       return (
         <tr>
-          <td> {weather.city.name}</td>
-          <td> {weather.city.country}</td>
-          <td>{Math.round(10*(weather.list[0].main.temp - 273.15)) / 10} °C</td>
-          <td>{weather.list[0].weather[0].description}</td>
+          <td>{ weather.city.name }</td>
+          {/* }<td> {CountryData.countries[weather.city.country]}</td> */}
+          <td>{ Math.round(10*(weather.list[0].main.temp - 273.15)) / 10 } °C</td>
+          <td>{ weather.list[0].main.humidity } %</td>
+          <td>{ weather.list[0].weather[0].description }</td>
           <td></td>
         </tr>
       )
