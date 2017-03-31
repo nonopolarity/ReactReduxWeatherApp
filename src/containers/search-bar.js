@@ -7,16 +7,24 @@ export default class SearchBar extends Component {
     super(props);
     this.state = { term: "" }
     this.handleInputChange = this.handleInputChange.bind(this)
+    this.handleFormSubmit = this.handleFormSubmit.bind(this)
   }
 
   handleInputChange(event) {
-    console.log(event.target.value);
+    console.log("In handleInputChange", event.target.value, event.currentTarget, event.target);
     this.setState({ term: event.target.value })
+  }
+
+  handleFormSubmit(event) {
+    console.log("In handleSubmit", event);
+    //debugger;
+    event.preventDefault();
+    //this.setState({ term: event.target.value })
   }
 
   render() {
     return (
-      <form className="input-group">
+      <form className="input-group" onSubmit={this.handleFormSubmit}>
       <input
         className="form-control"
         placeholder="Search for..."
