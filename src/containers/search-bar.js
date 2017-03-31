@@ -1,6 +1,10 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import { fetchWeather } from "../actions/index";
 
-export default class SearchBar extends Component {
+
+class SearchBar extends Component {
 
   constructor(props) {
     console.log("Inside SearchBar constructor");
@@ -20,6 +24,7 @@ export default class SearchBar extends Component {
     //debugger;
     event.preventDefault();
     //this.setState({ term: event.target.value })
+    this.props.fetchWeather(this.state.term);   // the action creator is part of props now. Note that we use the state, not the input field to get the value, because we use the state as the central location for data, and this is a controlled field
   }
 
   render() {
@@ -40,3 +45,9 @@ export default class SearchBar extends Component {
   }
 
 }
+
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ fetchWeather}, dispatch);
+}
+
+export default connect(null, mapDispatchToProps)(SearchBar);
