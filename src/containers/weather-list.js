@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import {countries} from "country-data";
 import CountryData from 'country-data'
 
+console.log("CountryData.countries", CountryData.countries);
 // const CountryData2 = require(CountryData)
 class WeatherList extends Component {
 
@@ -10,10 +11,16 @@ class WeatherList extends Component {
     console.log("countries", CountryData.countries, CountryData.countries["US"])
     console.log(JSON.stringify(countries['US']));
     console.log(JSON.stringify(CountryData.countries['US']));
+
+
     //console.log("countries", CountryData, CountryData.countries, CountryData.countries.all, CountryData.countries["TW"])
     return this.props.weatherList.map((weather) => {
+
+      const temps = weather.list.map((data) => data.main.temp);
+      console.log("temps", temps);
+
       return (
-        <tr>
+        <tr key={weather.city.name}>
           <td>{ weather.city.name }</td>
           {/* }<td> {CountryData.countries[weather.city.country]}</td> */}
           <td>{ Math.round(10*(weather.list[0].main.temp - 273.15)) / 10 } °C</td>
