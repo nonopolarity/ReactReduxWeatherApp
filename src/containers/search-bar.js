@@ -25,6 +25,7 @@ class SearchBar extends Component {
     event.preventDefault();
     //this.setState({ term: event.target.value })
     this.props.fetchWeather(this.state.term);   // the action creator is part of props now. Note that we use the state, not the input field to get the value, because we use the state as the central location for data, and this is a controlled field
+    this.setState({ term: "" })
   }
 
   render() {
