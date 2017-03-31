@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import {countries} from "country-data";
 import CountryData from 'country-data'
 
+
 // const CountryData2 = require(CountryData)
 class WeatherList extends Component {
 
