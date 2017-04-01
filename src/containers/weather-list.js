@@ -1,3 +1,4 @@
+
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import {countries} from "country-data";
@@ -12,7 +13,9 @@ class WeatherList extends Component {
     console.log("countries", CountryData.countries, CountryData.countries["US"])
     console.log(JSON.stringify(countries['US']));
     console.log(JSON.stringify(CountryData.countries['US']));
-
+    console.log(JSON.stringify(CountryData.countries.TW));
+    console.log(CountryData.countries.TW);
+    console.log(countries.TW);
 
     //console.log("countries", CountryData, CountryData.countries, CountryData.countries.all, CountryData.countries["TW"])
     return this.props.weatherList.map((weather) => {
