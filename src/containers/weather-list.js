@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import {countries} from "country-data";
 import CountryData from 'country-data'
+import Chart from "../components/chart";
 
 console.log("CountryData.countries", CountryData.countries);
 // const CountryData2 = require(CountryData)
@@ -17,16 +18,30 @@ class WeatherList extends Component {
     return this.props.weatherList.map((weather) => {
 
       const temps = weather.list.map((data) => data.main.temp);
+      const humidities = weather.list.map((data) => data.main.humidity);
+      const pressures = weather.list.map((data) => data.main.pressure);
+
       console.log("temps", temps);
 
       return (
         <tr key={weather.city.name}>
           <td>{ weather.city.name }</td>
+
           {/* }<td> {CountryData.countries[weather.city.country]}</td> */}
           <td>{ Math.round(10*(weather.list[0].main.temp - 273.15)) / 10 } °C</td>
+
           <td>{ weather.list[0].main.humidity } %</td>
+
           <td>{ weather.list[0].weather[0].description }</td>
-          <td></td>
+          <td>
+            <Chart data={temps} color="orange" />
+          </td>
+          <td>
+            <Chart data={humidities} color="blue" />
+          </td>
+          <td>
+            <Chart data={pressures} color="green" />
+          </td>
         </tr>
       )
 
@@ -40,6 +55,9 @@ class WeatherList extends Component {
       <th>City</th>
       <th>Country</th>
       <th>Temperature</th>
+      <th>Description</th>
+      <th>Description</th>
+      <th>Description</th>
       <th>Description</th>
       </thead>
       <tbody>
